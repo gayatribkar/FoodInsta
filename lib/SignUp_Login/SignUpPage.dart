@@ -1,4 +1,5 @@
 // import 'package:flutter/material.dart';
+// import 'package:flutter_foodinsta_app/SignUp_Login/LoginPage.dart';
 
 // class SignupPage extends StatefulWidget {
 //   @override
@@ -8,9 +9,25 @@
 // class _SignupPageState extends State<SignupPage> {
 //   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 //   final TextEditingController _nameController = TextEditingController();
+//   final TextEditingController _usernameController = TextEditingController(); // Username controller
 //   final TextEditingController _emailController = TextEditingController();
 //   final TextEditingController _passwordController = TextEditingController();
-//   final TextEditingController _retypePasswordController = TextEditingController();
+//   final TextEditingController _confirmPasswordController = TextEditingController();
+
+//   bool _isPasswordVisible = false;
+//   bool _isConfirmPasswordVisible = false;
+
+//   void _togglePasswordVisibility() {
+//     setState(() {
+//       _isPasswordVisible = !_isPasswordVisible;
+//     });
+//   }
+
+//   void _toggleConfirmPasswordVisibility() {
+//     setState(() {
+//       _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+//     });
+//   }
 
 //   void _validateAndSignup() {
 //     if (_formKey.currentState!.validate()) {
@@ -26,7 +43,7 @@
 //         children: [
 //           // Background image for the top half of the screen
 //           Container(
-//             height: MediaQuery.of(context).size.height * 0.4,
+//             height: MediaQuery.of(context).size.height * 0.35,
 //             decoration: const BoxDecoration(
 //               image: DecorationImage(
 //                 image: AssetImage('assets/login.jpeg'), // Replace with your background image
@@ -38,8 +55,8 @@
 //           Align(
 //             alignment: Alignment.bottomCenter,
 //             child: Container(
-//               height: MediaQuery.of(context).size.height * 0.7,
-//               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+//               height: MediaQuery.of(context).size.height * 0.75,
+//               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
 //               decoration: const BoxDecoration(
 //                 color: Colors.white,
 //                 borderRadius: BorderRadius.vertical(
@@ -61,11 +78,10 @@
 //                       style: TextStyle(
 //                         fontSize: 34,
 //                         fontWeight: FontWeight.bold,
-//                         color: Colors.green[700], // Adjusted to match theme
+//                         color: Colors.green[700],
 //                       ),
 //                     ),
 //                     const SizedBox(height: 40),
-                    
 //                     Form(
 //                       key: _formKey,
 //                       child: Column(
@@ -89,9 +105,27 @@
 //                               return null;
 //                             },
 //                           ),
-//                           const SizedBox(height: 20),
-                          
-
+//                           const SizedBox(height: 15),
+//                           // Username Field
+//                           TextFormField(
+//                             controller: _usernameController,
+//                             decoration: InputDecoration(
+//                               labelText: 'Username',
+//                               border: OutlineInputBorder(
+//                                 borderRadius: BorderRadius.circular(10),
+//                               ),
+//                               prefixIcon: const Icon(Icons.account_circle),
+//                               filled: true,
+//                               fillColor: Colors.grey[100],
+//                             ),
+//                             validator: (value) {
+//                               if (value == null || value.isEmpty) {
+//                                 return 'Please enter a username';
+//                               }
+//                               return null;
+//                             },
+//                           ),
+//                           const SizedBox(height: 15),
 //                           // Email Field
 //                           TextFormField(
 //                             controller: _emailController,
@@ -113,9 +147,8 @@
 //                               return null;
 //                             },
 //                           ),
-//                           const SizedBox(height: 20),
-                          
-//                           // Password Field
+//                           const SizedBox(height: 15),
+//                           // Password Field with eye toggle
 //                           TextFormField(
 //                             controller: _passwordController,
 //                             decoration: InputDecoration(
@@ -124,41 +157,53 @@
 //                                 borderRadius: BorderRadius.circular(10),
 //                               ),
 //                               prefixIcon: const Icon(Icons.lock),
+//                               suffixIcon: IconButton(
+//                                 icon: Icon(
+//                                   _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+//                                 ),
+//                                 onPressed: _togglePasswordVisibility,
+//                               ),
 //                               filled: true,
 //                               fillColor: Colors.grey[100],
 //                             ),
-//                             obscureText: true,
+//                             obscureText: !_isPasswordVisible,
 //                             validator: (value) {
 //                               if (value == null || value.isEmpty) {
-//                                 return 'Please enter your password';
+//                                 return 'Please enter a password';
 //                               }
 //                               return null;
 //                             },
 //                           ),
-//                           const SizedBox(height: 20),
-                          
-//                           // Retype Password Field
+//                           const SizedBox(height: 15),
+//                           // Confirm Password Field with eye toggle
 //                           TextFormField(
-//                             controller: _retypePasswordController,
+//                             controller: _confirmPasswordController,
 //                             decoration: InputDecoration(
-//                               labelText: 'Retype Password',
+//                               labelText: 'Confirm Password',
 //                               border: OutlineInputBorder(
 //                                 borderRadius: BorderRadius.circular(10),
 //                               ),
-//                               prefixIcon: const Icon(Icons.lock_outline),
+//                               prefixIcon: const Icon(Icons.lock),
+//                               suffixIcon: IconButton(
+//                                 icon: Icon(
+//                                   _isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+//                                 ),
+//                                 onPressed: _toggleConfirmPasswordVisibility,
+//                               ),
 //                               filled: true,
 //                               fillColor: Colors.grey[100],
 //                             ),
-//                             obscureText: true,
+//                             obscureText: !_isConfirmPasswordVisible,
 //                             validator: (value) {
-//                               if (value != _passwordController.text) {
+//                               if (value == null || value.isEmpty) {
+//                                 return 'Please confirm your password';
+//                               } else if (value != _passwordController.text) {
 //                                 return 'Passwords do not match';
 //                               }
 //                               return null;
 //                             },
 //                           ),
-//                           const SizedBox(height: 30),
-
+//                           const SizedBox(height: 25),
 //                           // Sign Up Button
 //                           Row(
 //                             mainAxisAlignment: MainAxisAlignment.end,
@@ -171,7 +216,26 @@
 //                                   shape: const CircleBorder(),
 //                                   elevation: 5,
 //                                 ),
-//                                 child: const Icon(Icons.check, color: Colors.white),
+//                                 child: const Icon(Icons.arrow_forward, color: Colors.white),
+//                               ),
+//                             ],
+//                           ),
+//                           const SizedBox(height: 8),
+//                           // Go back to Login
+//                           Row(
+//                             mainAxisAlignment: MainAxisAlignment.center,
+//                             children: [
+//                               TextButton(
+//                                 onPressed: () {
+//                                   Navigator.push(
+//                                     context,
+//                                     MaterialPageRoute(builder: (context) => LoginPage()),
+//                                   );
+//                                 },
+//                                 child: const Text(
+//                                   'Go back to Login',
+//                                   style: TextStyle(fontWeight: FontWeight.bold),
+//                                 ),
 //                               ),
 //                             ],
 //                           ),
@@ -192,6 +256,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_foodinsta_app/SignUp_Login/LoginPage.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -201,6 +267,7 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController(); // Username controller
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
@@ -208,22 +275,62 @@ class _SignupPageState extends State<SignupPage> {
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
 
+  // Toggles password visibility
   void _togglePasswordVisibility() {
     setState(() {
       _isPasswordVisible = !_isPasswordVisible;
     });
   }
 
+  // Toggles confirm password visibility
   void _toggleConfirmPasswordVisibility() {
     setState(() {
       _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
     });
   }
 
-  void _validateAndSignup() {
+  // Validate form and call signup API
+  Future<void> _validateAndSignup() async {
     if (_formKey.currentState!.validate()) {
-      // Perform signup logic here
-      print('Signup Successful');
+      final response = await _signup(
+        _nameController.text,
+        _usernameController.text,  // Pass username
+        _emailController.text,
+        _passwordController.text,
+      );
+      if (response != null && response.statusCode == 200) {
+        print('Signup Successful');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LoginPage()),
+        );
+      } else {
+        print('Signup Failed: ${response?.body}');
+      }
+    }
+  }
+
+  // Signup API Call
+  Future<http.Response?> _signup(String name, String username, String email, String password) async {
+    final url = Uri.parse('https://adiboy6-service1--3000.prod1.defang.dev/register');
+    
+    final body = json.encode({
+      'name': name,
+      'username': username,
+      'email': email,
+      'password': password,
+    });
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {"Content-Type": "application/json"},
+        body: body,
+      );
+      return response;
+    } catch (e) {
+      print('Error during signup: $e');
+      return null;
     }
   }
 
@@ -232,17 +339,15 @@ class _SignupPageState extends State<SignupPage> {
     return Scaffold(
       body: Stack(
         children: [
-          // Background image for the top half of the screen
           Container(
             height: MediaQuery.of(context).size.height * 0.35,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/login.jpeg'), // Replace with your background image
+                image: AssetImage('assets/login.jpeg'), // Background image
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          // White container for form fields with rounded corners
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -251,7 +356,7 @@ class _SignupPageState extends State<SignupPage> {
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(50), // Apply border radius at the top
+                  top: Radius.circular(50),
                 ),
                 boxShadow: [
                   BoxShadow(
@@ -298,7 +403,27 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                           const SizedBox(height: 15),
                           
-                       
+                          // Username Field
+                          TextFormField(
+                            controller: _usernameController,
+                            decoration: InputDecoration(
+                              labelText: 'Username',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              prefixIcon: const Icon(Icons.person_outline),
+                              filled: true,
+                              fillColor: Colors.grey[100],
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter a username';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 15),
+
                           // Email Field
                           TextFormField(
                             controller: _emailController,
@@ -321,6 +446,7 @@ class _SignupPageState extends State<SignupPage> {
                             },
                           ),
                           const SizedBox(height: 15),
+
                           // Password Field with eye toggle
                           TextFormField(
                             controller: _passwordController,
@@ -348,7 +474,8 @@ class _SignupPageState extends State<SignupPage> {
                             },
                           ),
                           const SizedBox(height: 15),
-                          // Confirm Password Field with eye toggle
+
+                          // Confirm Password Field
                           TextFormField(
                             controller: _confirmPasswordController,
                             decoration: InputDecoration(
@@ -377,7 +504,8 @@ class _SignupPageState extends State<SignupPage> {
                             },
                           ),
                           const SizedBox(height: 25),
-                          // Sign Up Button
+
+                          // Signup Button
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -393,7 +521,9 @@ class _SignupPageState extends State<SignupPage> {
                               ),
                             ],
                           ),
+
                           const SizedBox(height: 8),
+                          
                           // Go back to Login
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,

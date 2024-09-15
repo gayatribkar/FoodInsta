@@ -1,74 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_foodinsta_app/SignUp_Login/LoginPage.dart';// Import the login page
-
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Healthy Food App',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue, // Define the primary color here
-//         visualDensity: VisualDensity.adaptivePlatformDensity,
-//       ),
-//       home: SplashPage(),
-//     );
-//   }
-// }
-
-// class SplashPage extends StatefulWidget {
-//   @override
-//   _SplashPageState createState() => _SplashPageState();
-// }
-
-// class _SplashPageState extends State<SplashPage> {
-//   @override
-//   void initState() {
-//     super.initState();
-//     _navigateToLoginPage();
-//   }
-
-//   void _navigateToLoginPage() {
-//     Future.delayed(const Duration(seconds: 3), () {
-//       Navigator.pushReplacement(
-//         context,
-//         MaterialPageRoute(builder: (context) => LoginPage()),
-//       );
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Image.asset(
-//               'assets/splash.png', // Replace with your splash image path
-//               height: 200,
-//               fit: BoxFit.cover,
-//             ),
-//             const SizedBox(height: 20),
-//             const Text(
-//               'Healthy Food App',
-//               style: TextStyle(
-//                 fontSize: 24,
-//                 fontWeight: FontWeight.bold,
-//                 color: Colors.blue,
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_foodinsta_app/SignUp_Login/LoginPage.dart';
 
@@ -164,7 +93,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                   ),
                   const SizedBox(height: 20),
                    Text(
-                    'FoodSta',
+                    'PlatePost',
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
