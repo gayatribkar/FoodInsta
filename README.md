@@ -10,10 +10,6 @@
 - Explore new and exciting dishes every day
 - Receive feedback and opinions on your creations
 
-## Getting Started
-
-To start using the app, simply create an account, upload your recipes, and connect with the community. We hope you enjoy using FoodInsta as much as we enjoyed creating it.
-
 ## Watch the Demo
 
 Check out the demo video of FoodInsta in action:
